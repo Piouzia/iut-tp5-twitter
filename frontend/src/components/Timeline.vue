@@ -7,6 +7,9 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Resource from 'vue-resource'
+Vue.use(Resource)
 var tweet1 = {auteur: 'auteur1', contenu: 'voilà un super contenu !'}
 var tweet2 = {auteur: 'auteur2', contenu: 'Wouah tip top !'}
 var tweet3 = {auteur: 'auteur3', contenu: 'On s\'éclate sur Twitter yahou !'}
@@ -14,6 +17,9 @@ import Tweet from './Tweet'
 export default {
   name: 'timeline',
   components: {Tweet},
+  created () {
+   this.fetchTweets()
+  },
   data () {
     return {
       tweets: [tweet1, tweet2, tweet3]
