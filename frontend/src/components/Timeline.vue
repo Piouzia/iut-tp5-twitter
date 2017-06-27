@@ -17,6 +17,15 @@ import Tweet from './Tweet'
 export default {
   name: 'timeline',
   components: {Tweet},
+  methods: {
+    fetchTweets: function () {
+      this.$http.get('http://localhost:8080/list').then(response => {
+        this.tweets = response.body
+      }, response => {
+        console.log('error')
+      })
+    }
+  },
   created () {
     this.fetchTweets()
   },
