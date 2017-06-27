@@ -9,7 +9,7 @@
     <div>
       <ul>
         <li class="button"> <icon name="reply"/> </li>
-        <li class="button"> <icon name="retweet"/> </li>
+        <li class="button"> <icon name="retweet"/> {{ countRetweet() }} </li>
         <li class="button"> <icon name="heart"/> </li>
         <li class="button"> <icon name="envelope"/> </li>
       </ul>
@@ -27,6 +27,9 @@ export default {
   methods: {
     moment: function (date) {
       return moment(date)
+    },
+    countRetweet: function () {
+      return this.tweet.retweeters.length
     }
   },
   props: ['tweet'],
