@@ -18,7 +18,7 @@ export default {
   name: 'timeline',
   components: {Tweet},
   created () {
-   this.fetchTweets()
+    this.fetchTweets()
   },
   data () {
     return {
