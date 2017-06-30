@@ -35,6 +35,7 @@ export default {
       this.$http.get('http://localhost:8080/retweet', {params: {utilisateur: 'hibou', tweet: this.tweet.id}, responseType: 'text'}).then(response => {
         this.tweets = response.body
         this.loading = false
+        this.$emit('retweeted', this.tweet.id)
       }, response => {
         console.log('error retweet')
       })
