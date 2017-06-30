@@ -9,7 +9,7 @@
     <div>
       <ul>
         <li class="button"> <icon name="reply"/> </li>
-        <li class="button"> <a @click="retweet()"><icon name="retweet"/> {{ countRetweet() }} </a></li>
+        <a @click="retweet()"><li class="button"> <icon name="retweet"/> {{ countRetweet() }} </li></a>
         <li class="button"> <icon name="heart"/> </li>
         <li class="button"> <icon name="envelope"/> </li>
       </ul>
@@ -32,7 +32,7 @@ export default {
       return this.tweet.retweeters.length
     },
     retweet: function () {
-      this.$http.get('http://localhost:8080/retweet', {param: {utilisateur: 'hibou', tweet: this.tweet.id}, responseType: 'text'}).then(response => {
+      this.$http.get('http://localhost:8080/retweet', {params: {utilisateur: 'hibou', tweet: this.tweet.id}, responseType: 'text'}).then(response => {
         this.tweets = response.body
         this.loading = false
       }, response => {
@@ -50,6 +50,7 @@ export default {
 <style scoped>
 li.button {
  display: inline-block;
+ cursor: pointer;
 }
 
 a {
