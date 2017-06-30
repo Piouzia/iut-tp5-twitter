@@ -32,7 +32,7 @@ export default {
       return this.tweet.retweeters.length
     },
     retweet: function () {
-      this.$http.get('http://localhost:8080/retweet', {params: {utilisateur: 'hibou', tweet: this.tweet.id}, responseType: 'text'}).then(response => {
+      this.$http.get('http://localhost:8080/retweet', {params: {utilisateur: this.currentUser, tweet: this.tweet.id}, responseType: 'text'}).then(response => {
         this.tweets = response.body
         this.loading = false
         this.$emit('retweeted', this.tweet.id)
@@ -41,7 +41,7 @@ export default {
       })
     }
   },
-  props: ['tweet'],
+  props: ['tweet', 'currentUser'],
   created () {
     moment.locale('fr')
   }

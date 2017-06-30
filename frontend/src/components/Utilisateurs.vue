@@ -21,6 +21,9 @@ export default {
     this.getUtilisateurs()
   },
   methods: {
+    onChange: function (handle) {
+      this.$emit('changeUtilisateur', handle)
+    },
     getUtilisateurs: function () {
       this.$http.get('http://localhost:8080/utilisateurs').then(response => {
         this.utilisateurs = response.body
